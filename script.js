@@ -60,7 +60,7 @@ function insertarAuto(evento) {
   listarAutos();
 }
 
-// addEventListener permite ejecutar una función cuando ocurre un evento.
+// Escucha el envío del formulario y ejecuta insertarAuto.
 formulario.addEventListener("submit", insertarAuto);
 
 // Carga los datos del automóvil seleccionado en el formulario.
@@ -99,6 +99,7 @@ function cancelarEdicion() {
   document.querySelector("#boton-cancelar").classList.add("oculto");
 }
 
+// Escucha el clic en Cancelar y ejecuta cancelarEdicion.
 document.querySelector("#boton-cancelar").addEventListener("click", cancelarEdicion);
 
 // Busca automóviles mientras el usuario escribe.
@@ -106,6 +107,7 @@ function buscarAutos() {
   listarAutos();
 }
 
+// Escucha cada cambio en la búsqueda y ejecuta buscarAutos.
 busqueda.addEventListener("input", buscarAutos);
 
 // Elimina el automóvil seleccionado del localStorage.
@@ -115,6 +117,7 @@ function eliminarAuto(id) {
   listarAutos();
 }
 
+// Escucha clics en la lista para editar o eliminar un automóvil.
 listaAutos.addEventListener("click", (evento) => {
   if (evento.target.classList.contains("boton-editar")) {
     prepararEdicion(Number(evento.target.dataset.id));
