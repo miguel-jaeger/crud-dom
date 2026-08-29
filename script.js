@@ -2,6 +2,7 @@ const CLAVE_STORAGE = "autos";
 const formulario = document.querySelector("#formulario-auto");
 const listaAutos = document.querySelector("#lista-autos");
 const mensajeVacio = document.querySelector("#mensaje-vacio");
+const busqueda = document.querySelector("#busqueda");
 
 // Obtiene los automóviles guardados en el localStorage.
 function obtenerAutos() {
@@ -10,7 +11,12 @@ function obtenerAutos() {
 
 // Muestra los automóviles en las filas de la tabla.
 function listarAutos() {
-  const autos = obtenerAutos();
+  const textoBusqueda = busqueda.value.toLowerCase().trim();
+  const autos = obtenerAutos().filter((auto) => {
+    const datosAuto = `${auto.marca} ${auto.modelo} ${auto.anno} ${auto.color}`.toLowerCase();
+    return datosAuto.includes(textoBusqueda);
+  });
+
   listaAutos.innerHTML = "";
   mensajeVacio.classList.toggle("oculto", autos.length > 0);
 
@@ -19,7 +25,7 @@ function listarAutos() {
     fila.innerHTML = `
       <td>${auto.marca}</td>
       <td>${auto.modelo}</td>
-      <td>${auto.anio}</td>
+      <td>${auto.anno}</td>
       <td>${auto.color}</td>
       <td>
         <button type="button" class="boton-editar" data-id="${auto.id}">Editar</button>
@@ -43,7 +49,7 @@ function insertarAuto(evento) {
     id: Date.now(),
     marca: document.querySelector("#marca").value,
     modelo: document.querySelector("#modelo").value,
-    anio: document.querySelector("#anio").value,
+    anno: document.querySelector("#anio").value,
     color: document.querySelector("#color").value
   };
   const autos = obtenerAutos();
@@ -63,7 +69,7 @@ function prepararEdicion(id) {
   document.querySelector("#auto-id").value = auto.id;
   document.querySelector("#marca").value = auto.marca;
   document.querySelector("#modelo").value = auto.modelo;
-  document.querySelector("#anio").value = auto.anio;
+  document.querySelector("#anio").value = auto.anno;
   document.querySelector("#color").value = auto.color;
   document.querySelector("#boton-guardar").textContent = "Actualizar auto";
   document.querySelector("#boton-cancelar").classList.remove("oculto");
@@ -77,7 +83,7 @@ function actualizarAuto() {
 
   autos[posicion].marca = document.querySelector("#marca").value;
   autos[posicion].modelo = document.querySelector("#modelo").value;
-  autos[posicion].anio = document.querySelector("#anio").value;
+  autos[posicion].anno = document.querySelector("#anio").value;
   autos[posicion].color = document.querySelector("#color").value;
   localStorage.setItem(CLAVE_STORAGE, JSON.stringify(autos));
   cancelarEdicion();
@@ -93,6 +99,13 @@ function cancelarEdicion() {
 }
 
 document.querySelector("#boton-cancelar").addEventListener("click", cancelarEdicion);
+
+// Busca automóviles mientras el usuario escribe.
+function buscarAutos() {
+  listarAutos();
+}
+
+busqueda.addEventListener("input", buscarAutos);
 
 // Elimina el automóvil seleccionado del localStorage.
 function eliminarAuto(id) {

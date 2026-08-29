@@ -24,6 +24,8 @@ instalar dependencias ni iniciar un servidor.
   actualiza el `localStorage`.
 - **Cancelar edición:** el botón Cancelar limpia el formulario y vuelve al
   modo de registro.
+- **Buscar:** la caja de búsqueda filtra la tabla mientras escribes. La
+  búsqueda revisa la marca, el modelo, el año y el color.
 
 ## Archivos principales
 
@@ -47,6 +49,6 @@ Puedes registrar estos automóviles para probar el CRUD:
 
 ## Ideas para practicar
 
-Puedes agregar validaciones, nuevos campos como precio o placa, un filtro de
-búsqueda o una confirmación antes de eliminar. Es recomendable revisar cada
-commit para observar cómo se incorporó cada funcionalidad paso a paso.
+Puedes agregar validaciones, nuevos campos como precio o placa o una
+confirmación antes de eliminar. Es recomendable revisar cada commit para
+observar cómo se incorporó cada funcionalidad paso a paso.
