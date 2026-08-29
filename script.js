@@ -9,7 +9,7 @@ function obtenerAutos() {
   return JSON.parse(localStorage.getItem(CLAVE_STORAGE)) || [];
 }
 
-// Muestra los automóviles en las filas de la tabla.
+// Obtiene los autos, filtra los resultados de la búsqueda y reconstruye la tabla.
 function listarAutos() {
   const textoBusqueda = busqueda.value.toLowerCase().trim();
   const autos = obtenerAutos().filter((auto) => {
