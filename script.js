@@ -60,6 +60,7 @@ function insertarAuto(evento) {
   listarAutos();
 }
 
+// addEventListener permite ejecutar una función cuando ocurre un evento.
 formulario.addEventListener("submit", insertarAuto);
 
 // Carga los datos del automóvil seleccionado en el formulario.
