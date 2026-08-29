@@ -21,7 +21,9 @@ function listarAutos() {
       <td>${auto.modelo}</td>
       <td>${auto.anio}</td>
       <td>${auto.color}</td>
-      <td></td>
+      <td>
+        <button type="button" class="boton-eliminar" data-id="${auto.id}">Eliminar</button>
+      </td>
     `;
     listaAutos.appendChild(fila);
   });
@@ -47,4 +49,18 @@ function insertarAuto(evento) {
 }
 
 formulario.addEventListener("submit", insertarAuto);
+
+// Elimina el automóvil seleccionado del localStorage.
+function eliminarAuto(id) {
+  const autos = obtenerAutos().filter((auto) => auto.id !== id);
+  localStorage.setItem(CLAVE_STORAGE, JSON.stringify(autos));
+  listarAutos();
+}
+
+listaAutos.addEventListener("click", (evento) => {
+  if (evento.target.classList.contains("boton-eliminar")) {
+    eliminarAuto(Number(evento.target.dataset.id));
+  }
+});
+
 listarAutos();
