@@ -33,6 +33,18 @@ instalar dependencias ni iniciar un servidor.
 - `script.js`: funciones del CRUD, manipulación del DOM y uso de
   `localStorage`.
 
+## Datos de prueba
+
+Puedes registrar estos automóviles para probar el CRUD:
+
+| Marca | Modelo | Año | Color |
+| --- | --- | --- | --- |
+| Toyota | Corolla | 2022 | Blanco |
+| Honda | Civic | 2021 | Gris plata |
+| Ford | Mustang | 2023 | Rojo |
+| Hyundai | Tucson | 2024 | Negro |
+| Nissan | Sentra | 2020 | Azul |
+
 ## Ideas para practicar
 
 Puedes agregar validaciones, nuevos campos como precio o placa, un filtro de
