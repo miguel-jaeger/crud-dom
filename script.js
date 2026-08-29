@@ -27,4 +27,24 @@ function listarAutos() {
   });
 }
 
+// Registra un automóvil nuevo y actualiza la lista.
+function insertarAuto(evento) {
+  evento.preventDefault();
+
+  const auto = {
+    id: Date.now(),
+    marca: document.querySelector("#marca").value,
+    modelo: document.querySelector("#modelo").value,
+    anio: document.querySelector("#anio").value,
+    color: document.querySelector("#color").value
+  };
+  const autos = obtenerAutos();
+
+  autos.push(auto);
+  localStorage.setItem(CLAVE_STORAGE, JSON.stringify(autos));
+  formulario.reset();
+  listarAutos();
+}
+
+formulario.addEventListener("submit", insertarAuto);
 listarAutos();
