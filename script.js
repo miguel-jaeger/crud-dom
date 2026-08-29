@@ -19,7 +19,7 @@ function listarAutos() {
     fila.innerHTML = `
       <td>${auto.marca}</td>
       <td>${auto.modelo}</td>
-      <td>${auto.anio}</td>
+      <td>${auto.anno}</td>
       <td>${auto.color}</td>
       <td>
         <button type="button" class="boton-editar" data-id="${auto.id}">Editar</button>
@@ -43,7 +43,7 @@ function insertarAuto(evento) {
     id: Date.now(),
     marca: document.querySelector("#marca").value,
     modelo: document.querySelector("#modelo").value,
-    anio: document.querySelector("#anio").value,
+    anno: document.querySelector("#anio").value,
     color: document.querySelector("#color").value
   };
   const autos = obtenerAutos();
@@ -63,7 +63,7 @@ function prepararEdicion(id) {
   document.querySelector("#auto-id").value = auto.id;
   document.querySelector("#marca").value = auto.marca;
   document.querySelector("#modelo").value = auto.modelo;
-  document.querySelector("#anio").value = auto.anio;
+  document.querySelector("#anio").value = auto.anno;
   document.querySelector("#color").value = auto.color;
   document.querySelector("#boton-guardar").textContent = "Actualizar auto";
   document.querySelector("#boton-cancelar").classList.remove("oculto");
@@ -77,7 +77,7 @@ function actualizarAuto() {
 
   autos[posicion].marca = document.querySelector("#marca").value;
   autos[posicion].modelo = document.querySelector("#modelo").value;
-  autos[posicion].anio = document.querySelector("#anio").value;
+  autos[posicion].anno = document.querySelector("#anio").value;
   autos[posicion].color = document.querySelector("#color").value;
   localStorage.setItem(CLAVE_STORAGE, JSON.stringify(autos));
   cancelarEdicion();
