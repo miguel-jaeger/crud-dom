@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #222;
+}
+
+.contenedor {
+  width: min(900px, 92%);
+  margin: 30px auto;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+.formulario {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 10px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+}
+
+.botones {
+  display: flex;
+  gap: 10px;
+  grid-column: 2;
+}
+
+button {
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 3px;
+  background-color: #1769aa;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0d4f82;
+}
+
+.boton-eliminar {
+  background-color: #b3261e;
+}
+
+.boton-editar {
+  background-color: #4d7c0f;
+}
+
+.oculto {
+  display: none;
+}
+
+.tabla-contenedor {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+th {
+  background-color: #ddd;
+}
+
+#mensaje-vacio {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .botones {
+    grid-column: 1;
+  }
+}
