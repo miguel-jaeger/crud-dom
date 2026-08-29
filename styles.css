@@ -15,8 +15,17 @@ body {
 }
 
 h1,
-h2 {
   text-align: center;
+}
+
+section {
+  margin-top: 25px;
+}
+
+.busqueda {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
 }
 
 .formulario {

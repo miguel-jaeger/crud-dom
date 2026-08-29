@@ -2,6 +2,7 @@ const CLAVE_STORAGE = "autos";
 const formulario = document.querySelector("#formulario-auto");
 const listaAutos = document.querySelector("#lista-autos");
 const mensajeVacio = document.querySelector("#mensaje-vacio");
+const busqueda = document.querySelector("#busqueda");
 
 // Obtiene los automóviles guardados en el localStorage.
 function obtenerAutos() {
@@ -10,7 +11,12 @@ function obtenerAutos() {
 
 // Muestra los automóviles en las filas de la tabla.
 function listarAutos() {
-  const autos = obtenerAutos();
+  const textoBusqueda = busqueda.value.toLowerCase().trim();
+  const autos = obtenerAutos().filter((auto) => {
+    const datosAuto = `${auto.marca} ${auto.modelo} ${auto.anno} ${auto.color}`.toLowerCase();
+    return datosAuto.includes(textoBusqueda);
+  });
+
   listaAutos.innerHTML = "";
   mensajeVacio.classList.toggle("oculto", autos.length > 0);
 
@@ -93,6 +99,13 @@ function cancelarEdicion() {
 }
 
 document.querySelector("#boton-cancelar").addEventListener("click", cancelarEdicion);
+
+// Busca automóviles mientras el usuario escribe.
+function buscarAutos() {
+  listarAutos();
+}
+
+busqueda.addEventListener("input", buscarAutos);
 
 // Elimina el automóvil seleccionado del localStorage.
 function eliminarAuto(id) {
